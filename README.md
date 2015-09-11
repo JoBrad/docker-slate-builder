@@ -2,8 +2,8 @@
 
 Just give the container two volumes:
 
-|Host|Container||
-|-|-|-|
+|Host|Container|Description|
+|----|---------|-----------|
 |/some/source/dir|/app/source|The Slate Markdown sources|
 |/some/build/dir|/app/build|The directory to build HTML into|
 
