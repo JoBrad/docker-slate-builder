@@ -9,6 +9,8 @@ Just give the container two volumes:
 
 ### Example
 
+##### Build static HTML site
+
 Build Slate Markdown sources from `/some/source/dir` on the host machine into static HTML in `/some/build/dir` on the host machine.
 
 Example below creates a build directory first (if the host directory doesn't exist, docker will create it owned by root, which is less then desirable since we're just trying to build a static HTML site).  It also specifies `--user` so docker runs as the current user/group, so the generated files are owned by the current user.
@@ -20,6 +22,14 @@ docker run -it --rm \
  -v /some/build/dir:/app/build \
  --user=$UID:$GID \
  grumpydocker/slate-builder
+```
+
+##### Serve built content with Nginx on port 8080
+
+```
+docker run -dt --name=some-docs -p :8080:80 \
+ -v /some/build/dir:/usr/share/nginx/html:ro \
+ nginx
 ```
 
 ### Why
